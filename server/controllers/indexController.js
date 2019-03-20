@@ -12,29 +12,29 @@ let User = userModel.User; // alias
 module.exports.displayHomePage =(req, res, next)=> {
     res.render('index', { title: 'Home' , 
     displayName: req.user ? req.user.displayName:' '});
-  }
+  };
 
   module.exports.displayAboutPage = (req, res, next)=> {
     res.render('index', { title: 'About', 
-    displayName: req.user ? req.user.displayName:' ' });
-  }
+    displayName: req.user ? req.user.displayName:"" });
+  };
 
   module.exports.displayProductPage =(req, res, next)=> {
     res.render('index', { title: 'Products' , 
-    displayName: req.user ? req.user.displayName:' '});
-  }
+    displayName: req.user ? req.user.displayName:""});
+  };
 
   module.exports.displayServicePage =(req, res, next)=> {
     res.render('index', { title: 'Services' , 
-    displayName: req.user ? req.user.displayName:' '});
+    displayName: req.user ? req.user.displayName:""});
   }
   module.exports.displayContactPage = (req, res, next)=> {
     res.render('index', { title: 'Contact', 
-    displayName: req.user ? req.user.displayName:' ' });
+    displayName: req.user ? req.user.displayName:"" });
   }
   module.exports.displayFavouritePage =(req, res, next)=> {
     res.render('index', { title: 'Favourit', 
-    displayName: req.user ? req.user.displayName:' ' });
+    displayName: req.user ? req.user.displayName:"" });
   }
   module.exports.displayLoginPage = (req, res, next) => {
       // check if user is already logged in

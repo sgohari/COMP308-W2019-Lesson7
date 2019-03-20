@@ -14,7 +14,8 @@ module.exports.displayFavouriteList = (req, res, next)=>{
            //console.log(favouriteList);
             res.render('favourit/index', {
                 title: 'Favourit List',
-                favouriteList: favouriteList
+                favouriteList: favouriteList,
+                displayName: req.user? req.user.displayName:""
             });
         }
     });
@@ -22,14 +23,15 @@ module.exports.displayFavouriteList = (req, res, next)=>{
 module.exports.displayAddFavourits = (req, res, next)=>{
 
     res.render('favourit/add', {
-        title: 'Add new Favourites'
+        title: 'Add new Favourites',
+        displayName: req.user? req.user.displayName:""
     });
 
 }
 //updated controller
 module.exports.processAddFavouritList =(req, res, next)=>{
 
-    console.log(req.body)
+    //console.log(req.body)
 
     let newFavourites = myFavourit({
         "FirstName": req.body.firstName,
@@ -64,8 +66,8 @@ module.exports.displayEditPage =(req, res, next)=>{
             //show edit view 
             res.render('favourit/edit',{
                 title:'Edit Information',
-                favorite: fvObject
-                
+                favorite: fvObject,
+                displayName: req.user? req.user.displayName:""
             });
         }
     });
@@ -107,7 +109,7 @@ module.exports.performDelete = (req, res, next)=>{
             res.end(err);
         }
         else {
-            // refresh the contact list
+            // refresh the Favourite list
             res.redirect('/favourite-List');
         }
     });

@@ -5,6 +5,7 @@ let mongoose = require('mongoose');
 
 //reference to passports
 let passport = require('passport');
+let favouriteController=require('../controllers/favourites');
 
 function requiredAuth(req, res, next){
     //checking if the user is logged in
@@ -17,7 +18,6 @@ function requiredAuth(req, res, next){
   }
 
 
-let favouriteController=require('../controllers/favourites');
 router.get('/',requiredAuth, favouriteController.displayFavouriteList);
 
 // GET route for the add page

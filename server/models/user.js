@@ -6,7 +6,7 @@ let userSchema = mongoose.Schema(
   {
     username: {
       type: String,
-      default: '',
+      default: "",
       trim: true,
       required: 'username is required'
     },
@@ -20,13 +20,13 @@ let userSchema = mongoose.Schema(
     */
     email: {
       type: String,
-      default: '',
+      default: "",
       trim: true,
       required: 'email is required'
     },
     displayName: {
       type: String,
-      default: '',
+      default: "",
       trim: true,
       required: 'Display Name is required'
     },

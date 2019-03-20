@@ -17,12 +17,12 @@ let mongoose = require('mongoose');
 let DB=require('./db');
 
 //point Mongoose to DB URI
-mongoose.connect(DB.URI);
+mongoose.connect(DB.URI,{useNewUrlParser:true});
 
 let mongoDB= mongoose.connection;
 mongoDB.on('error', console.error.bind(console,'Connection Error'));
 mongoDB.once('open',()=>{
-  console.log('Connected to MongoDB');
+  console.log('You are Connected to MongoDB');
 });
 
 let indexRouter = require('../routes/index');
@@ -43,16 +43,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-// initialize flash
-app.use(flash());
-
 // setup express-session
 app.use(session({
   secret: "MySecret",
   saveUninitialized: false,
   resave: false
 }));
-
+// initialize flash
+app.use(flash());
 
 // initialize passport
 app.use(passport.initialize());
